@@ -17,7 +17,7 @@ solution (<http://superuser.com/questions/174346>).
 """
 
 from os import remove, symlink
-from os.path import exists, expanduser, join, realpath
+from os.path import dirname, exists, join, realpath
 from subprocess import PIPE, Popen
 from time import sleep
 
@@ -27,7 +27,7 @@ __author__ = 'Maciej Konieczny <hello@narf.pl>'
 SMALL_FONT = 14
 BIG_FONT = 18
 DISPLAY = 'AppleDisplay'  # that's how my LG display is called in `ioreg`
-FONTSIZED_VIM_DIR = realpath(expanduser('~/.vim/bundle/fontsized'))
+VIM_SIZE_DIR = join(dirname(realpath(__file__)), 'fontsized.vim/size')
 
 
 def change_font_size_in_macvim(big):
@@ -38,8 +38,8 @@ def change_font_size_in_macvim(big):
     """
 
     # symlink correct size file as current
-    source = join(FONTSIZED_VIM_DIR, 'big.vim' if big else 'small.vim')
-    target = join(FONTSIZED_VIM_DIR, 'current.vim')
+    source = join(VIM_SIZE_DIR, 'big.vim' if big else 'small.vim')
+    target = join(VIM_SIZE_DIR, 'current.vim')
     if exists(target):
         remove(target)
     symlink(source, target)
