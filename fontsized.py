@@ -74,6 +74,15 @@ def get_stdout(command):
     return process.stdout.read().rstrip()
 
 
+def has_open_window(application):
+    if is_running(application):
+        stdout = run_applescript('tell application "{0}" to count windows' \
+                                 .format(application))
+        return int(stdout) > 0
+    else:
+        return False
+
+
 def is_external_display_connected():
     # if display is disconnected, `ioreg`'s output is an empty string
     return bool(get_stdout('ioreg -rc ' + DISPLAY))
@@ -103,7 +112,7 @@ def _main():
             change_font_size_in_macvim(is_connected)
 
         # change font size in Terminal
-        if not changed_in_terminal and is_running('Terminal'):
+        if not changed_in_terminal and has_open_window('Terminal'):
             change_font_size_in_terminal(is_connected)
             changed_in_terminal = True
 
