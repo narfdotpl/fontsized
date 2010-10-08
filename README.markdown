@@ -21,7 +21,7 @@ Git, Vim, etc.) follow these guidelines:
 
     mkdir ~/tools
     cd !$
-    git clone git://github.com/narfdotpl/fontsized
+    git clone http://github.com/narfdotpl/fontsized.git
 
 
 ### Symlink Vim plugin
