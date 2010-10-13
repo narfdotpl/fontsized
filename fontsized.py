@@ -46,7 +46,7 @@ def change_font_size_in_macvim(big):
 
     # Here I should put an AppleScript snippet that would iterate over
     # MacVim windows, run `<Esc><Leader>f` in each of them and in the
-    # end go back to the space it was in the beggining and change focus
+    # end go back to the space it was in the beginning and change focus
     # to the application I was using then... But my AppleScript skills
     # are not that crazy.
 
