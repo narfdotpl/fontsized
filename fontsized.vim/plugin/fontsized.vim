@@ -13,6 +13,11 @@ function! FontsizedReload()
 
     " load settings for current font size
     source ~/.vim/bundle/fontsized/size/current.vim
+
+    " set window height
+    if !g:fontsized_fullscreen
+        set lines=40
+    endif
 endfunction
 
 
@@ -51,8 +56,8 @@ function! FontsizedUseTwoVerticalWindows()
 endfunction
 
 
+" map trigger
+map <leader>f :call FontsizedReload()<Enter>
+
 " activate
 call FontsizedReload()
-
-" map reload
-map <leader>f :call FontsizedReload()<Enter>

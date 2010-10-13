@@ -30,15 +30,14 @@ DISPLAY = 'AppleDisplay'  # that's how my LG display is called in `ioreg`
 VIM_SIZE_DIR = join(dirname(realpath(__file__)), 'fontsized.vim/size')
 
 
-def change_font_size_in_macvim(big):
+def change_font_size_in_macvim(should_be_big):
     """
-    Symlink "big" or "small" plugin file as current.
+    Symlink "big" or "small" plugin file as "current".
 
-    Vim function updating font size has to be run manually.
+    Vim function reloading plugin settings has to be run manually.
     """
 
-    # symlink correct size file as current
-    source = join(VIM_SIZE_DIR, 'big.vim' if big else 'small.vim')
+    source = join(VIM_SIZE_DIR, 'big.vim' if should_be_big else 'small.vim')
     target = join(VIM_SIZE_DIR, 'current.vim')
     if exists(target):
         remove(target)
@@ -47,21 +46,21 @@ def change_font_size_in_macvim(big):
     # Here I should put an AppleScript snippet that would iterate over
     # MacVim windows, run `<Esc><Leader>f` in each of them and in the
     # end go back to the space it was in the beginning and change focus
-    # to the application I was using then... But my AppleScript skills
+    # to the application I was using then...  But my AppleScript skills
     # are not that crazy.
 
 
-def change_font_size_in_terminal(big):
+def change_font_size_in_terminal(should_be_big):
     """
     Change font size for set of settings (e.g. "Basic" or "Grass") used by
     first terminal window.
 
-    Change affects all windows using this set of settings.
+    Change will affect all windows using this set of settings.
     """
 
     run_applescript('tell application "Terminal" to ' \
                     'set font size of first window to {0}' \
-                    .format(BIG_FONT if big else SMALL_FONT))
+                    .format(BIG_FONT if should_be_big else SMALL_FONT))
 
 
 def get_stdout(command):
@@ -95,8 +94,8 @@ def is_running(application):
     return int(stdout) > 0
 
 
-def run_applescript(applescript):
-    return get_stdout("osascript -e '{0}'".format(applescript))
+def run_applescript(code):
+    return get_stdout("osascript -e '{0}'".format(code))
 
 
 def _main():
