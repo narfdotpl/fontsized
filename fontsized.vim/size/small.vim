@@ -1,7 +1,11 @@
-if g:fontsized_fullscreen && g:fontsized_one_vertical_window
-    set guifont=Monaco:h18
+if g:fontsized_one_vertical_window
+    if g:fontsized_fullscreen
+        set guifont=Monaco:h18
+    else
+        set guifont=Monaco:h14
+    endif
 else
-    set guifont=Monaco:h14
+    set guifont=Monaco:h12
 endif
 
 " restart fullscreen to get maximal window height (needed when changing
