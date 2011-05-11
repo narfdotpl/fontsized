@@ -8,7 +8,7 @@ Change font size in Terminal and MacVim when external display is
 Installation
 ------------
 
-This is my personal toy (it makes few assumptions) and as such is
+This is my personal toy (it makes a few assumptions) and as such is
 not ready to be used by the masses.  Nevertheless, you might be able
 to take advantage of it, provided you make yourself familiar with
 `fontsized.py`'s main docstring and `fontsized.vim`'s behaviour.
