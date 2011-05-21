@@ -8,10 +8,10 @@ Change font size in Terminal and MacVim when external display is
 Installation
 ------------
 
-This is my personal toy (it makes a few assumptions) and as such is
-not ready to be used by the masses.  Nevertheless, you might be able
-to take advantage of it, provided you make yourself familiar with
-`fontsized.py`'s main docstring and `fontsized.vim`'s behaviour.
+This is my personal toy (it makes a few assumptions) and as such is not
+ready to be used by the masses.  Nevertheless, you might be able to take
+advantage of it, provided you read the source. :)  (Well, docstrings and
+comments should be enough).
 
 If you meet accustomed requirements (OS X 10.6, 2.6 ≤ Python < 3.0,
 dotfiles in a Git repo, Vim with Pathogen, etc.) follow these guidelines:
@@ -23,6 +23,12 @@ dotfiles in a Git repo, Vim with Pathogen, etc.) follow these guidelines:
     git submodule add https://github.com/narfdotpl/fontsized.git .vim/bundle/fontsized
 
 
+### Customize fonts and sizes
+
+    cd ~/.vim/bundle/fontsized
+    mvim -p fontsized.py size/*
+    git commit --all --message='customized fonts and sizes'
+
 
 ### Symlink and start launchd job
 
@@ -31,6 +37,17 @@ dotfiles in a Git repo, Vim with Pathogen, etc.) follow these guidelines:
     git commit --all --message='set correct path'
     ln -s `pwd`/pl.narf.fontsized.plist ~/Library/LaunchAgents/
     launchctl load ~/Library/LaunchAgents/pl.narf.fontsized.plist
+
+
+### Configure Vim
+
+Put similar mappings in your `.vimrc`:
+
+    " change window size with alt + ctrl + arrow
+    map <A-C-up> :call FontsizedTurnFullscreenOn()<Enter>
+    map <A-C-right> :call FontsizedUseTwoVerticalWindows()<Enter>
+    map <A-C-down> :call FontsizedTurnFullscreenOff()<Enter>
+    map <A-C-left> :call FontsizedUseOneVerticalWindow()<Enter>
 
 
 Meta
