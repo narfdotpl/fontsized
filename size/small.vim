@@ -11,10 +11,3 @@ else
     set columns=167
     set lines=45
 endif
-
-" restart fullscreen to get maximal window height (needed when changing
-" from one to two vertical windows)
-if g:fontsized_fullscreen
-    set nofullscreen
-    set fullscreen
-endif
