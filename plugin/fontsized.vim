@@ -4,20 +4,8 @@ let g:fontsized_one_vertical_window = 1
 
 
 function! FontsizedReload()
-    " set window width
-    if g:fontsized_one_vertical_window
-        set columns=83  " 79 character line + 4 character line number
-    else
-        set columns=167
-    endif
-
     " load settings for current font size
     source ~/.vim/bundle/fontsized/size/current.vim
-
-    " set window height
-    if !g:fontsized_fullscreen
-        set lines=40
-    endif
 endfunction
 
 

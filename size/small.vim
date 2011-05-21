@@ -4,8 +4,12 @@ if g:fontsized_one_vertical_window
     else
         set guifont=Monaco:h14
     endif
+    set columns=83  " 4 character line number + 79 character line
+    set lines=40
 else
     set guifont=Monaco:h12
+    set columns=167
+    set lines=45
 endif
 
 " restart fullscreen to get maximal window height (needed when changing
