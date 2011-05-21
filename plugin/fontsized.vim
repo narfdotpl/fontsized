@@ -56,8 +56,5 @@ function! FontsizedUseTwoVerticalWindows()
 endfunction
 
 
-" map trigger
-map <leader>f :call FontsizedReload()<Enter>
-
 " activate
 call FontsizedReload()

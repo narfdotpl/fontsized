@@ -43,6 +43,9 @@ dotfiles in a Git repo, Vim with Pathogen, etc.) follow these guidelines:
 
 Put similar mappings in your `.vimrc`:
 
+    " reload font size settings
+    map <leader>f :call FontsizedReload()<Enter>
+
     " change window size with alt + ctrl + arrow
     map <A-C-up> :call FontsizedTurnFullscreenOn()<Enter>
     map <A-C-right> :call FontsizedUseTwoVerticalWindows()<Enter>

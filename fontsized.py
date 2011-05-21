@@ -7,9 +7,8 @@ external display is (dis)connected.
 Change to big font when display is connected and to small font when
 it's disconnected.
 
-Changing font size in MacVim requires a Vim plugin that has to be
-run manually.  Function updating font size is mapped to `<Leader>f`
-by default.
+Changing font size in MacVim requires a Vim plugin.  It has to be run
+manually in windows that were open during the change.
 
 To detect external display the script investigates `ioreg`'s output
 every five seconds; it's not very smart but I don't know a better
