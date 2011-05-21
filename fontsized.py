@@ -27,7 +27,7 @@ __author__ = 'Maciej Konieczny <hello@narf.pl>'
 SMALL_FONT = 14
 BIG_FONT = 18
 DISPLAY = 'AppleDisplay'  # that's how my LG display is called in `ioreg`
-VIM_SIZE_DIR = join(dirname(realpath(__file__)), 'fontsized.vim/size')
+VIM_SIZE_DIR = join(dirname(realpath(__file__)), 'size')
 
 
 def change_font_size_in_macvim(should_be_big):
