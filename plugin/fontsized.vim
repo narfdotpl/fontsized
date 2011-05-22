@@ -3,7 +3,7 @@ let g:fontsized_fullscreen = 0
 let g:fontsized_one_vertical_window = 1
 
 
-function! FontsizedReload()
+function! s:FontsizedReload()
     " load settings for current font size
     source ~/.vim/bundle/fontsized/size/current.vim
 
@@ -17,37 +17,54 @@ function! FontsizedReload()
 endfunction
 
 
-function! FontsizedTurnFullscreenOn()
+function! s:FontsizedTurnFullscreenOn()
     if !g:fontsized_fullscreen
         let g:fontsized_fullscreen = 1
-        call FontsizedReload()
+        call s:FontsizedReload()
     endif
 endfunction
 
 
-function! FontsizedTurnFullscreenOff()
+function! s:FontsizedTurnFullscreenOff()
     if g:fontsized_fullscreen
         let g:fontsized_fullscreen = 0
-        call FontsizedReload()
+        call s:FontsizedReload()
     endif
 endfunction
 
 
-function! FontsizedUseOneVerticalWindow()
+function! s:FontsizedUseOneVerticalWindow()
     if !g:fontsized_one_vertical_window
         let g:fontsized_one_vertical_window = 1
-        call FontsizedReload()
+        call s:FontsizedReload()
     endif
 endfunction
 
 
-function! FontsizedUseTwoVerticalWindows()
+function! s:FontsizedUseTwoVerticalWindows()
     if g:fontsized_one_vertical_window
         let g:fontsized_one_vertical_window = 0
-        call FontsizedReload()
+        call s:FontsizedReload()
     endif
 endfunction
 
 
 " activate
-call FontsizedReload()
+call s:FontsizedReload()
+
+
+" expose commands
+command! -nargs=0 FontsizedReload
+         \ call s:FontsizedReload()
+
+command! -nargs=0 FontsizedTurnFullscreenOn
+         \ call s:FontsizedTurnFullscreenOn()
+
+command! -nargs=0 FontsizedUseTwoVerticalWindows
+         \ call s:FontsizedUseTwoVerticalWindows()
+
+command! -nargs=0 FontsizedTurnFullscreenOff
+         \ call s:FontsizedTurnFullscreenOff()
+
+command! -nargs=0 FontsizedUseOneVerticalWindow
+         \ call s:FontsizedUseOneVerticalWindow()
