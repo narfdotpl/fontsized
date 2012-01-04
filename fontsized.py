@@ -23,7 +23,7 @@ from time import sleep
 
 __author__ = 'Maciej Konieczny <hello@narf.pl>'
 
-SMALL_FONT = 14
+SMALL_FONT = 16
 BIG_FONT = 18
 DISPLAY = 'AppleDisplay'  # that's how my LG display is called in `ioreg`
 VIM_SIZE_DIR = join(dirname(realpath(__file__)), 'size')
