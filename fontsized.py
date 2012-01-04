@@ -1,22 +1,17 @@
 #!/usr/bin/env python
 # encoding: utf-8
 """
-Run all the time and change font size in Terminal and MacVim when
-external display is (dis)connected.
+Run all the time and change font size in Terminal when external display is
+(dis)connected.
 
 Change to big font when display is connected and to small font when
 it's disconnected.
-
-Changing font size in MacVim requires a Vim plugin.  It has to be run
-manually in windows that were open during the change.
 
 To detect external display the script investigates `ioreg`'s output
 every five seconds; it's not very smart but I don't know a better
 solution (<http://superuser.com/questions/174346>).
 """
 
-from os import remove, symlink
-from os.path import dirname, exists, join, realpath
 from subprocess import PIPE, Popen
 from time import sleep
 
@@ -26,27 +21,6 @@ __author__ = 'Maciej Konieczny <hello@narf.pl>'
 SMALL_FONT = 16
 BIG_FONT = 18
 DISPLAY = 'AppleDisplay'  # that's how my LG display is called in `ioreg`
-VIM_SIZE_DIR = join(dirname(realpath(__file__)), 'size')
-
-
-def change_font_size_in_macvim(should_be_big):
-    """
-    Symlink "big" or "small" plugin file as "current".
-
-    Vim function reloading plugin settings has to be run manually.
-    """
-
-    source = join(VIM_SIZE_DIR, 'big.vim' if should_be_big else 'small.vim')
-    target = join(VIM_SIZE_DIR, 'current.vim')
-    if exists(target):
-        remove(target)
-    symlink(source, target)
-
-    # Here I should put an AppleScript snippet that would iterate over
-    # MacVim windows, run `<Esc><Leader>f` in each of them and in the
-    # end go back to the space it was in the beginning and change focus
-    # to the application I was using then...  But my AppleScript skills
-    # are not that crazy.
 
 
 def change_font_size_in_terminal(should_be_big):
@@ -104,15 +78,12 @@ def _main():
         is_connected = is_external_display_connected()
         if was_connected != is_connected:
             was_connected = is_connected
-            changed_in_terminal = False
-
-            # change font size in MacVim
-            change_font_size_in_macvim(is_connected)
+            changed_font_size = False
 
         # change font size in Terminal
-        if not changed_in_terminal and has_open_window('Terminal'):
+        if not changed_font_size and has_open_window('Terminal'):
             change_font_size_in_terminal(is_connected)
-            changed_in_terminal = True
+            changed_font_size = True
 
         # do it all again after five seconds
         sleep(5)

@@ -10,7 +10,7 @@
     <array>
         <string>/usr/bin/env</string>
         <string>python</string>
-        <string>/Users/narf/.vim/bundle/fontsized/fontsized.py</string>
+        <string>/Users/narf/github/fontsized/fontsized.py</string>
     </array>
 
     <key>KeepAlive</key>
