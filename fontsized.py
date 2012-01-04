@@ -58,8 +58,8 @@ def change_font_size_in_terminal(should_be_big):
     """
 
     run_applescript('tell application "Terminal" to ' \
-                    'set font size of first window to {0}' \
-                    .format(BIG_FONT if should_be_big else SMALL_FONT))
+                    'set font size of current settings of front window to '
+                    '{0}'.format(BIG_FONT if should_be_big else SMALL_FONT))
 
 
 def get_stdout(command):

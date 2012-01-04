@@ -13,7 +13,7 @@ ready to be used by the masses.  Nevertheless, you might be able to take
 advantage of it, provided you read the source. :)  (Well, docstrings and
 comments should be enough).
 
-If you meet accustomed requirements (OS X 10.6, 2.6 ≤ Python < 3.0,
+If you meet accustomed requirements (OS X 10.7, 2.6 ≤ Python < 3.0,
 dotfiles in a Git repo, Vim with Pathogen, etc.) follow these guidelines:
 
 
